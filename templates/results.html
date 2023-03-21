@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>YT SCRAPPING</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+
+      <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+
+</head>
+
+<body>
+
+  <div class="table-users">
+   <div class="header">Video Details</div>
+
+   <table cellspacing="0">
+      <tr>
+         <th>Video URLS</th>
+         <th>Thumbnail URLS</th>
+         <th>Title</th>
+         <th>Views</th>
+         <th>Upload time</th>
+
+         
+      </tr>
+         {% for video in videos %}
+      <tr>
+          <td>{{video['Video Urls']}}</td>
+         <td>{{video['Thumbnail Urls']}}</td>
+         <td>{{video['Title']}}</td>
+         <td>{{video['Views']}}</td>
+         <td>{{video['Upload time']}} </td>
+       {% endfor %}
+   </table>
+</div>
+
+
+
+</body>
+
+</html>
