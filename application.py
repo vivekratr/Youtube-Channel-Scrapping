@@ -9,12 +9,12 @@ import pymongo
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from bs4 import BeautifulSoup
-app = Flask(__name__)
-@app.route('/',methods=['GET'])
+application = Flask(__name__)
+@application.route('/',methods=['GET'])
 @cross_origin() # its purpose is to be available to different countries
 def index():
     return render_template("index.html")
-@app.route('/results',methods=['POST','GET'])
+@application.route('/results',methods=['POST','GET'])
 @cross_origin() # its purpose is to be available to different countries
 def result():
     if request.method == 'POST':
@@ -92,4 +92,4 @@ def result():
         except  Exception as e:
             return e
 if __name__ == '__main__':
-    app.run(debug=True)
+    application.run(debug=True)
