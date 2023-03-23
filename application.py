@@ -1,15 +1,16 @@
 # from flask import Flask
 from flask import Flask, render_template, request,jsonify
 from flask_cors import CORS,cross_origin
-import requests
-import time
+# import requests
+# import time
 # from bs4 import BeautifulSoup as bs
 from urllib.request import urlopen as uReq
-import pymongo
+# import pymongo
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from bs4 import BeautifulSoup
 application = Flask(__name__)
+app = application
 @application.route('/',methods=['GET'])
 @cross_origin() # its purpose is to be available to different countries
 def index():
@@ -91,5 +92,9 @@ def result():
                 
         except  Exception as e:
             return e
-if __name__ == '__main__':
-    application.run(debug=True)
+    else:
+        render_template('index.html')
+# if __name__ == '__main__':
+#     application.run(debug=True)
+if __name__ == "__main__":
+    app.run(host='127.0.0.1', port=8000, debug=True)
