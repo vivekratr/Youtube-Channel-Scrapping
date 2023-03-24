@@ -4,7 +4,7 @@ from flask_cors import CORS,cross_origin
 import os
 # import requests
 # import time
-# from bs4 import BeautifulSoup as bs
+# from bs4 import BeautifulSoup as bs 
 from urllib.request import urlopen as uReq
 # import pymongo
 from selenium import webdriver
