@@ -20,7 +20,7 @@ def index():
 @cross_origin() # its purpose is to be available to different countries
 def result():
     if request.method == 'POST':
-        try:
+        try: 
             searchString = request.form['content']
             print(searchString)
             options = Options()
