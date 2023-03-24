@@ -22,17 +22,20 @@ def result():
         try:
             searchString = request.form['content']
             print(searchString)
-            options = Options()
-            options.add_argument("--headless")
-            driver = webdriver.Chrome(options=options)
+            # options = Options()
+            # options.add_argument("--headless")
+            # driver = webdriver.Chrome(options=options)
             yt = searchString
-            driver.get(yt)
-            driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+            # driver.get(yt)
+            # driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
             # time.sleep(5)  # Add a sleep time to wait for more videos to load
 
-            page_source = driver.page_source
+            # page_source = driver.page_source
+            uClient = uReq(yt)
+            page_source = uClient.read()
+            uClient.close()
             soup = BeautifulSoup(page_source, 'html.parser')
-
+            
             # box = soup.findAll('div', {'class': 'ytd-rich-grid-media'})
             box = soup.findAll('div',id = 'contents')
 
@@ -97,4 +100,4 @@ def result():
 # if __name__ == '__main__':
 #     application.run(debug=True)
 # if __name__ == "__main__":
-#     app.run(host='127.0.0.1', port=8000, debug=True)
+#     app.run(host='172.31.0.219', port=8000, debug=True)
