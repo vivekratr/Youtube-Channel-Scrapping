@@ -1,6 +1,7 @@
 # from flask import Flask
 from flask import Flask, render_template, request,jsonify
 from flask_cors import CORS,cross_origin
+import os
 # import requests
 # import time
 # from bs4 import BeautifulSoup as bs
@@ -24,7 +25,11 @@ def result():
             print(searchString)
             options = Options()
             options.add_argument("--headless")
-            driver = webdriver.Chrome(executable_path=r'/usr/var/app/current/chromedriver.exe',options=options)
+            chrome_driver_path = os.environ.get('CHROME_DRIVER_PATH')
+
+#             driver = webdriver.Chrome(executable_path='/usr/var/app/current/chromedriver.exe',options=options)
+            driver = webdriver.Chrome(executable_path=chrome_driver_path,options=options)
+            
             yt = searchString
             driver.get(yt)
             driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
