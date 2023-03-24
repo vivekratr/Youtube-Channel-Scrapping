@@ -23,8 +23,8 @@ def result():
         try: 
             searchString = request.form['content']
             print(searchString)
-            options = Options()
-            options.add_argument("--headless")
+#             options = Options()
+#             options.add_argument("--headless")
 #             chrome_driver_path = os.environ.get('CHROME_DRIVER_PATH')
 #             print(chrome_driver_path)
                 
