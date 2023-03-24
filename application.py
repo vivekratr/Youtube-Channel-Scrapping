@@ -24,7 +24,7 @@ def result():
             print(searchString)
             options = Options()
             options.add_argument("--headless")
-            driver = webdriver.Chrome(executable_path=r'\chromedriver.exe',options=options)
+            driver = webdriver.Chrome(executable_path=r'/usr/var/app/current/chromedriver.exe',options=options)
             yt = searchString
             driver.get(yt)
             driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
