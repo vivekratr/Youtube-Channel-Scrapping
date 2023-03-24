@@ -31,7 +31,7 @@ def result():
 #             driver = webdriver.Chrome(executable_path='/usr/var/app/current/chromedriver.exe',options=options)
 #             driver = webdriver.Chrome(executable_path=chrome_driver_path,options=options)
 #             chrome_driver_path = os.environ.get('CHROME_DRIVER_PATH')
-            driver = webdriver.Chrome(executable_path=chrome_driver_path,options=options)
+            driver = webdriver.Chrome(executable_path=chrome_driver_path)
             
             yt = searchString
             driver.get(yt)
