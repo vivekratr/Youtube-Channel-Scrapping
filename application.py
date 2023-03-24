@@ -93,7 +93,8 @@ def result():
                 return "BHai scene hogaya!!!!"
                 
         except  Exception as e:
-            return e
+            error_message = str(e)
+            return f"An error occurred: {error_message}"
     else:
         render_template('index.html')
 if __name__ == '__main__':
