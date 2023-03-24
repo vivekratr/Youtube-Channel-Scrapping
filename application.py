@@ -87,8 +87,10 @@ def result():
             # db = client['review_scrap']
             # review_col = db['review_scrap_data']
             # review_col.insert_many(mydict)
-            return render_template('results.html', videos=final[0:len(final)])
-                
+            if(len(final)>0):
+                return render_template('results.html', videos=final[0:len(final)])
+            else:
+                return "BHai scene hogaya!!!!"
                 
         except  Exception as e:
             return e
