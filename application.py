@@ -49,10 +49,10 @@ def result():
             driver.get(yt)
             try:
     # wait until the "Accept all" button is present
-                cookie_consent_form = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "cookieconsent")))
+#                 cookie_consent_form = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "cookieconsent")))
 
 # find the "Accept all" button and click it
-                accept_all_button = cookie_consent_form.find_element_by_xpath("//button[contains(@class, 'ytp-button') and contains(text(), 'Accept all')]")
+                accept_all_button =   driver.page_source.find_element_by_xpath("//button[contains(@class, 'ytp-button') and contains(text(), 'Accept all')]")
                 accept_all_button.click()
             except:
     # handle exceptions if the "Accept all" button is not found or cannot be clicked
