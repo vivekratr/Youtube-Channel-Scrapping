@@ -109,7 +109,7 @@ def result():
                 
         except  Exception as e:
             error_message = str(e)
-            return f"An error occurred: {error_message}"
+            return f"An error occurred: {error_message,len(box)}"
     else:
         render_template('index.html')
 if __name__ == '__main__':
