@@ -16,6 +16,33 @@ app = application
 @cross_origin() # its purpose is to be available to different countries
 def index():
     return render_template("index.html")
+@app.route('/youtube')
+@cross_origin()
+def youtube():
+    # set up the Chrome browser options
+    chrome_options = Options()
+    chrome_options.add_argument("--headless")
+    chrome_options.add_argument("--disable-gpu")
+    chrome_options.add_argument("--no-sandbox")
+    chrome_options.add_argument("--disable-dev-shm-usage")
+    chrome_options.add_argument("--remote-debugging-port=9222")
+
+    # create a new Chrome browser instance
+    driver = webdriver.Chrome(chrome_options=chrome_options)
+
+    # navigate to the YouTube URL
+    driver.get('https://www.youtube.com')
+
+    # accept the cookie consent form
+    accept_button = driver.find_element_by_xpath('//button[contains(text(),"Accept all")]')
+    accept_button.click()
+
+    # continue with your web automation or scraping tasks on YouTube
+    ...
+
+    # close the browser
+    driver.quit()
+
 @application.route('/results',methods=['POST','GET'])
 @cross_origin() # its purpose is to be available to different countries
 def result():
