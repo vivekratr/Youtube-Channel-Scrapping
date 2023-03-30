@@ -48,8 +48,8 @@ def result():
             page_source = driver.page_source
             soup = BeautifulSoup(page_source, 'html.parser')
 
-            # box = soup.findAll('div', {'class': 'ytd-rich-grid-media'})
-            box = soup.findAll('div',id = 'contents')
+            box = soup.findAll('div', {'class': 'ytd-rich-grid-media'})
+#             box = soup.findAll('div',id = 'contents')
 
 
             # Print the number of videos found
