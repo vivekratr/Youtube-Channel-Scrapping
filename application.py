@@ -42,21 +42,23 @@ def result():
             chrome_options.add_argument('--no-sandbox')
 #             chrome_options.add_argument('--disable-dev-shm-usage')
 #             chrome_options.add_argument("--disable-extensions")
-
-            driver = webdriver.Chrome(executable_path='/usr/bin/chromedriver',options=chrome_options)
             
+            driver = webdriver.Chrome(executable_path='/usr/bin/chromedriver',options=chrome_options)
+            driver.get("https://www.youtube.com/@linuxhint/videos")
+            driver.add_cookie({'name': 'CONSENT', 'value': 'YES+1', 'domain': '.youtube.com'})
+            driver.refresh()
             yt = searchString
             driver.get(yt)
-            try:
-    # wait until the "Accept all" button is present
-#                 cookie_consent_form = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "cookieconsent")))
+#             try:
+#     # wait until the "Accept all" button is present
+# #                 cookie_consent_form = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "cookieconsent")))
 
-# find the "Accept all" button and click it
-                accept_all_button =   driver.page_source.find_element_by_xpath("//button[contains(@class, 'ytp-button') and contains(text(), 'Accept all')]")
-                accept_all_button.click()
-            except:
-    # handle exceptions if the "Accept all" button is not found or cannot be clicked
-                pass
+# # find the "Accept all" button and click it
+#                 accept_all_button =   driver.page_source.find_element_by_xpath("//button[contains(@class, 'ytp-button') and contains(text(), 'Accept all')]")
+#                 accept_all_button.click()
+#             except:
+#     # handle exceptions if the "Accept all" button is not found or cannot be clicked
+#                 pass
             driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
             # time.sleep(5)  # Add a sleep time to wait for more videos to load
 
