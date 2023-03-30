@@ -16,32 +16,7 @@ app = application
 @cross_origin() # its purpose is to be available to different countries
 def index():
     return render_template("index.html")
-@app.route('/yt')
-@cross_origin()
-def youtube():
-    # set up the Chrome browser options
-    chrome_options = Options()
-    chrome_options.add_argument("--headless")
-    chrome_options.add_argument("--disable-gpu")
-    chrome_options.add_argument("--no-sandbox")
-    chrome_options.add_argument("--disable-dev-shm-usage")
-    chrome_options.add_argument("--remote-debugging-port=9222")
 
-    # create a new Chrome browser instance
-    driver = webdriver.Chrome(chrome_options=chrome_options)
-
-    # navigate to the YouTube URL
-    driver.get('https://www.youtube.com')
-
-    # accept the cookie consent form
-    accept_button = driver.find_element_by_xpath('//button[contains(text(),"Accept all")]')
-    accept_button.click()
-
-    # continue with your web automation or scraping tasks on YouTube
-    ...
-
-    # close the browser
-    driver.quit()
 
 @application.route('/results',methods=['POST','GET'])
 @cross_origin() # its purpose is to be available to different countries
@@ -69,6 +44,15 @@ def result():
             
             yt = searchString
             driver.get(yt)
+            try:
+    # wait until the "Accept all" button is present
+                accept_all_button = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, '//button[@aria-label="Accept all"]')))
+
+    # click the "Accept all" button
+                accept_all_button.click()
+            except:
+    # handle exceptions if the "Accept all" button is not found or cannot be clicked
+                pass
             driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
             # time.sleep(5)  # Add a sleep time to wait for more videos to load
 
