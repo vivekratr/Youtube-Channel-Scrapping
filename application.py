@@ -1,4 +1,7 @@
 # from flask import Flask  
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 from flask import Flask, render_template, request,jsonify
 from flask_cors import CORS,cross_origin
 import os
@@ -46,9 +49,10 @@ def result():
             driver.get(yt)
             try:
     # wait until the "Accept all" button is present
-                accept_all_button = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, '/html/body/c-wiz/div/div/div/div[2]/div[1]/div[3]/div[1]/form[2]/div/div/button')))
+                cookie_consent_form = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.ID, "cookieconsent")))
 
-    # click the "Accept all" button
+# find the "Accept all" button and click it
+                accept_all_button = cookie_consent_form.find_element_by_xpath("//button[contains(@class, 'ytp-button') and contains(text(), 'Accept all')]")
                 accept_all_button.click()
             except:
     # handle exceptions if the "Accept all" button is not found or cannot be clicked
