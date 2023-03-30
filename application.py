@@ -32,7 +32,7 @@ def result():
 #             driver = webdriver.Chrome(executable_path=chrome_driver_path,options=options)
 #             chrome_driver_path = os.environ.get('CHROME_DRIVER_PATH')
             chrome_options = webdriver.ChromeOptions()
-            chrome_options.binary_location = '/usr/bin/google-chrome'
+#             chrome_options.binary_location = '/usr/bin/google-chrome'
             chrome_options.add_argument('--headless')
             chrome_options.add_argument('--no-sandbox')
 #             chrome_options.add_argument('--disable-dev-shm-usage')
