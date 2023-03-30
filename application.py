@@ -12,11 +12,11 @@ from selenium.webdriver.chrome.options import Options
 from bs4 import BeautifulSoup
 application = Flask(__name__)
 app = application
-@application.route('/',methods=['GET'])
+@application.route('/y',methods=['GET'])
 @cross_origin() # its purpose is to be available to different countries
 def index():
     return render_template("index.html")
-@app.route('/youtube')
+@app.route('/')
 @cross_origin()
 def youtube():
     # set up the Chrome browser options
