@@ -46,7 +46,7 @@ def result():
             driver.get(yt)
             try:
     # wait until the "Accept all" button is present
-                accept_all_button = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, '//*[@id="yDmH0d"]/c-wiz/div/div/div/div[2]/div[1]/div[3]/div[1]/form[2]/div/div/button')))
+                accept_all_button = WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.XPATH, '/html/body/c-wiz/div/div/div/div[2]/div[1]/div[3]/div[1]/form[2]/div/div/button')))
 
     # click the "Accept all" button
                 accept_all_button.click()
